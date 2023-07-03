@@ -22,5 +22,5 @@ export default ({
     { name: `hx-target`, value: target },
   ]);
 
-  return `<button${buttonProps}>${label}</button>`;
+  return `<button ${buttonProps}>${label}</button>`;
 };

@@ -8,5 +8,4 @@ export default ({ label }: ButtonProps) =>
   Wrapper({
     element: "span",
     content: `<button type="submit">${label}</button>`,
-    style: "padding: 4px;",
   });

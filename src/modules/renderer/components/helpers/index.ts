@@ -1,11 +1,12 @@
 type Prop = {
   name: string;
   value?: string;
+  prefix?: string;
 };
 
-export const renderProp = ({ name, value }: Prop) => {
+export const renderProp = ({ name, value, prefix = "" }: Prop) => {
   if (value) {
-    return `${name}="${value}"`;
+    return `${name}="${prefix}${value}"`;
   }
   return "";
 };
