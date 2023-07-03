@@ -9,3 +9,8 @@ export const renderProp = ({ name, value }: Prop) => {
   }
   return "";
 };
+
+export const renderProps = (props: Prop[]) => {
+  const propsToRender = props.map((prop) => renderProp(prop));
+  return propsToRender?.length ? propsToRender.join(" ") : "";
+};

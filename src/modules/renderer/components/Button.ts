@@ -1,4 +1,4 @@
-import { renderProp } from "./helpers";
+import { renderProps } from "./helpers";
 import { Method } from "./types";
 
 type ButtonProps = {
@@ -16,9 +16,11 @@ export default ({
   swap,
   target,
 }: ButtonProps) => {
-  const methodProp = renderProp({ name: `hx-${method}`, value: action });
-  const swapProp = renderProp({ name: `hx-swap`, value: swap });
-  const targetProp = renderProp({ name: `hx-target`, value: target });
+  const buttonProps = renderProps([
+    { name: `hx-${method}`, value: action },
+    { name: `hx-swap`, value: swap },
+    { name: `hx-target`, value: target },
+  ]);
 
-  return `<button ${methodProp} ${swapProp} ${targetProp}>${label}</button>`;
+  return `<button${buttonProps}>${label}</button>`;
 };

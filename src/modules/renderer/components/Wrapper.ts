@@ -1,4 +1,4 @@
-import { renderProp } from "./helpers";
+import { renderProps } from "./helpers";
 
 type WrapperProps = {
   id?: string;
@@ -8,10 +8,10 @@ type WrapperProps = {
 };
 
 export default ({ id, content, element = "div", style }: WrapperProps) =>
-  `<${element} ${renderProp({
-    name: "id",
-    value: id,
-  })} ${renderProp({
-    name: "style",
-    value: style,
-  })}>${content}</${element}>`;
+  `<${element} ${renderProps([
+    {
+      name: "id",
+      value: id,
+    },
+    { name: "style", value: style },
+  ])}>${content}</${element}>`;
