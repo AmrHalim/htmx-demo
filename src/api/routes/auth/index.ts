@@ -2,7 +2,12 @@ import express from "express";
 
 import { loginPage } from "../../../modules/renderer";
 import { validateEmail } from "../../../modules/validator";
-import { authenticate, login, AUTH_COOKIE_NAME } from "../../../modules/auth";
+import {
+  authenticate,
+  login,
+  AUTH_COOKIE_NAME,
+  logout,
+} from "../../../modules/auth";
 
 import { redirect } from "../helpers";
 
@@ -16,7 +21,9 @@ router.get("/login", (req, res) => {
   res.send(loginPage.render());
 });
 
-router.post("/logout", (_, res) => {
+router.post("/logout", (req, res) => {
+  logout(authenticate(req)?.token);
+
   res.clearCookie(AUTH_COOKIE_NAME);
   return res.send(redirect("/"));
 });

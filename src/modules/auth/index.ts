@@ -30,6 +30,14 @@ export const login = ({ email, password }: User): User | undefined => {
   return;
 };
 
+export const logout = (token?: string) => {
+  const user = users.find((user) => user.token === token);
+
+  if (user) {
+    user.token = "";
+  }
+};
+
 export const authenticate = (req: Request) => {
   const authToken = req.cookies?.[AUTH_COOKIE_NAME];
 
