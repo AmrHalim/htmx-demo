@@ -1,8 +1,12 @@
-import { Form, Input, FormButton, Wrapper } from "../../../components";
+import { Form, Input, FormButton } from "../../../components";
+import { makeValidationWrapper } from "../../../components/Form";
 
 const FORM_ID = "greeting_form";
-const VALIDATION_TARGET = "greeting_form_errors";
 
+const { element: validationWrapper, id: VALIDATION_TARGET } =
+  makeValidationWrapper({
+    target: FORM_ID,
+  });
 const nameInput = Input({
   name: "name",
   type: "text",
@@ -23,12 +27,6 @@ const emailInput = Input({
     trigger: "change",
     target: `#${VALIDATION_TARGET}`,
   },
-});
-const validationWrapper = Wrapper({
-  content: "",
-  element: "span",
-  id: VALIDATION_TARGET,
-  style: "color: red; font-size: 12px;",
 });
 
 export default Form({

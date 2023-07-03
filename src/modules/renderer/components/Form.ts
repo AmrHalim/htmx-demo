@@ -9,6 +9,19 @@ type FormProps = {
   reserveValidationWrapper?: boolean;
 };
 
+export const makeValidationWrapper = ({ target }: { target: string }) => {
+  const id = `errors-${target}`;
+  return {
+    element: Wrapper({
+      content: "",
+      element: "span",
+      id,
+      style: "color: red; font-size: 12px;",
+    }),
+    id,
+  };
+};
+
 export default ({
   action,
   content = "",
@@ -17,12 +30,7 @@ export default ({
   reserveValidationWrapper = false,
 }: FormProps) => {
   const validationWrapper = reserveValidationWrapper
-    ? Wrapper({
-        content: "",
-        element: "span",
-        id: `errors-${id}`,
-        style: "color: red;",
-      })
+    ? makeValidationWrapper({ target: id }).element
     : "";
 
   return `<form id="${id}" hx-${method}="${action}">
