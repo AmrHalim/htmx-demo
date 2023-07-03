@@ -1,4 +1,5 @@
 import express from "express";
+import cookie_parser from "cookie-parser";
 
 import configureRoutes from "./routes";
 
@@ -10,6 +11,7 @@ app.use(
     extended: true,
   })
 );
+app.use(cookie_parser());
 
 configureRoutes(app);
 

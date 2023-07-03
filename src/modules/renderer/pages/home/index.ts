@@ -1,18 +1,21 @@
 import { Wrapper } from "../../components";
-import page from "../../template/page";
+import page, { PageContext } from "../../template/page";
 
 import WelcomeHeader from "./sections/WelcomeHeader";
-import GreetingForm from "./sections/GreetingForm";
+import GreetAlert from "./sections/GreetAlert";
 
-export const render = () =>
-  page({
+export const render = ({ user }: PageContext) => {
+  const GreetUser = user ? GreetAlert(user) : "";
+
+  return page({
     title: "The Greeter App!",
     content: Wrapper({
-      content: `${WelcomeHeader}${GreetingForm}`,
+      content: `${WelcomeHeader}${GreetUser}`,
       style:
         "display: flex; flex-direction: column; justify-content: center; align-items: center;",
     }),
+    context: { user },
   });
+};
 
 export { default as GreetAlert } from "./sections/GreetAlert";
-export { default as WelcomeFormValidationErrors } from "./sections/WelcomeFormValidationErrors";

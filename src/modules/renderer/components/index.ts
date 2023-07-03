@@ -6,3 +6,4 @@ export { default as Input } from "./Input";
 export { default as FormButton } from "./FormButton";
 export { default as Alert } from "./Alert";
 export { default as Rows } from "./Rows";
+export { default as Link } from "./Link";

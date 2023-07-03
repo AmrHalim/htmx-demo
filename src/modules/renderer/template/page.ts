@@ -1,9 +1,19 @@
+import { User } from "../../auth";
+import Header from "../pages/sections/Header";
+
+export type PageContext = Record<string, any> & {
+  user?: User;
+};
+
 type PageProps = {
   content: string;
   title: string;
+  context?: PageContext;
 };
 
-export default ({ content, title }: PageProps) => `
+export default ({ content, title, context }: PageProps) => {
+  const header = Header({ user: context?.user });
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +23,9 @@ export default ({ content, title }: PageProps) => `
     <script src="https://unpkg.com/htmx.org@1.9.2"></script>
   </head>
   <body>
+    ${header}
     ${content}
   </body>
 </html>
-`;
+  `;
+};

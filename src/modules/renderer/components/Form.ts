@@ -1,4 +1,6 @@
+import FormButton from "./FormButton";
 import Wrapper from "./Wrapper";
+import { renderProps } from "./helpers";
 import { Method } from "./types";
 
 type FormProps = {
@@ -7,14 +9,23 @@ type FormProps = {
   id?: string;
   method?: Method;
   reserveValidationWrapper?: boolean;
+  submitLabel?: string;
+  validationWrapper?: ValidationWrapper;
 };
 
-export const makeValidationWrapper = ({ target }: { target: string }) => {
+type ValidationWrapper = {
+  id: string;
+  element: string;
+};
+export const makeValidationWrapper = ({
+  target,
+}: {
+  target: string;
+}): ValidationWrapper => {
   const id = `errors-${target}`;
   return {
     element: Wrapper({
       content: "",
-      element: "span",
       id,
       style: "color: red; font-size: 12px;",
     }),
@@ -28,17 +39,42 @@ export default ({
   id = "",
   method = "post",
   reserveValidationWrapper = false,
+  submitLabel,
+  validationWrapper,
 }: FormProps) => {
-  const validationWrapper = reserveValidationWrapper
-    ? makeValidationWrapper({ target: id }).element
+  const { element: validation, id: validationId } =
+    reserveValidationWrapper && !validationWrapper
+      ? makeValidationWrapper({ target: id })
+      : validationWrapper ?? { element: "", id: "" };
+
+  const submitButton = submitLabel
+    ? FormButton({
+        label: submitLabel,
+      })
     : "";
 
-  return `<form id="${id}" hx-${method}="${action}">
+  const formProps = renderProps([
+    {
+      name: "hx-target",
+      value: validationId,
+      prefix: "#",
+    },
+    {
+      name: "id",
+      value: id,
+    },
+    {
+      name: `hx-${method}`,
+      value: action,
+    },
+  ]);
+
+  return `<form ${formProps}>
     ${Wrapper({
       element: "div",
       style:
-        "display: flex; flex-direction: column; align-items: center; justify-content: center;",
-      content: children.join("") + validationWrapper,
+        "display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap:4px;",
+      content: children.join("") + validation + submitButton,
     })} 
   </form>`;
 };

@@ -1,7 +1,7 @@
 import Wrapper from "./Wrapper";
 import { renderProps } from "./helpers";
 
-type InputType = "text" | "number" | "email" | "submit";
+type InputType = "text" | "number" | "email" | "submit" | "password";
 type InputProps = {
   id?: string;
   required?: boolean;
@@ -69,6 +69,5 @@ export default ({
   return Wrapper({
     content: `${fieldLabel}<input ${inputProps} ${validationProps} />`,
     element: "span",
-    style: "padding: 4px;",
   });
 };

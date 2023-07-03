@@ -1,7 +1,7 @@
 import { Heading, Wrapper } from "../../components";
-import page from "../../template/page";
+import page, { PageContext } from "../../template/page";
 
-export const render = () =>
+export const render = ({ user }: PageContext) =>
   page({
     title: "Not Found!",
     content: Wrapper({
@@ -10,4 +10,5 @@ export const render = () =>
       }),
       style: "display: flex; justify-content: center; align-items:center;",
     }),
+    context: { user },
   });
