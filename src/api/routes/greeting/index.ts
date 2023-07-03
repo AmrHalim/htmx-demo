@@ -19,12 +19,12 @@ router.post("/validate-email", (req, res) => {
   const { email } = req.body;
   if (!validateEmail(email)) {
     return res.send(
-      homePage.WelcomeFormValidation({
+      homePage.WelcomeFormValidationErrors({
         errors: ["Please enter a valid email!"],
       })
     );
   }
-  return res.status(200).send("");
+  return res.send("");
 });
 
 export default router;

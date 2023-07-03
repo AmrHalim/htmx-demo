@@ -5,4 +5,4 @@ export { default as Form } from "./Form";
 export { default as Input } from "./Input";
 export { default as FormButton } from "./FormButton";
 export { default as Alert } from "./Alert";
-export { default as FormValidation } from "./FormValidation";
+export { default as Rows } from "./Rows";

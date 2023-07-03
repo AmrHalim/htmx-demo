@@ -15,4 +15,4 @@ export const render = () =>
   });
 
 export { default as GreetAlert } from "./sections/GreetAlert";
-export { default as WelcomeFormValidation } from "./sections/WelcomeFormValidation";
+export { default as WelcomeFormValidationErrors } from "./sections/WelcomeFormValidationErrors";
