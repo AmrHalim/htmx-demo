@@ -12,7 +12,7 @@ export default ({ errors }: FormValidationProps) => {
         element: "span",
       })
     )
-    .join();
+    .join("");
 
   return hasErrors
     ? Wrapper({

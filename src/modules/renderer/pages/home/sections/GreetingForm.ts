@@ -32,8 +32,13 @@ const emailInput = Input({
 export default Form({
   id: FORM_ID,
   action: "/greet",
-  content: `${nameInput}${emailInput}${validationWrapper}${FormButton({
-    label: "Greet!",
-  })}`,
+  children: [
+    nameInput,
+    emailInput,
+    validationWrapper,
+    FormButton({
+      label: "Greet!",
+    }),
+  ],
   reserveValidationWrapper: false,
 });

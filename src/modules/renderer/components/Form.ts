@@ -3,7 +3,7 @@ import { Method } from "./types";
 
 type FormProps = {
   action: string;
-  content?: string;
+  children?: string[];
   id?: string;
   method?: Method;
   reserveValidationWrapper?: boolean;
@@ -24,7 +24,7 @@ export const makeValidationWrapper = ({ target }: { target: string }) => {
 
 export default ({
   action,
-  content = "",
+  children = [],
   id = "",
   method = "post",
   reserveValidationWrapper = false,
@@ -38,7 +38,7 @@ export default ({
       element: "div",
       style:
         "display: flex; flex-direction: column; align-items: center; justify-content: center;",
-      content: content + validationWrapper,
+      content: children.join("") + validationWrapper,
     })} 
   </form>`;
 };
