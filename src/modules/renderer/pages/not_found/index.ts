@@ -1,4 +1,4 @@
-import { Heading, Wrapper } from "../../components";
+import { Heading, Wrapper } from "src/modules/ui";
 import page, { PageContext } from "../../template/page";
 
 export const render = ({ user }: PageContext) =>

@@ -1,4 +1,4 @@
-import { Wrapper } from "../../components";
+import { Wrapper } from "src/modules/ui";
 import page from "../../template/page";
 import LoginForm from "./sections/LoginForm";
 
