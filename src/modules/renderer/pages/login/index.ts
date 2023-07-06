@@ -1,14 +1,13 @@
-import { Wrapper } from "src/modules/ui";
+import PageContent from "src/modules/ui/PageContent";
+
 import page from "../../template/page";
 import LoginForm from "./sections/LoginForm";
 
 export const render = () =>
   page({
     title: "The Greeter App | Login",
-    content: Wrapper({
+    content: PageContent({
       content: LoginForm,
-      style:
-        "display: flex; flex-direction: column; justify-content: center; align-items: center;",
     }),
   });
 

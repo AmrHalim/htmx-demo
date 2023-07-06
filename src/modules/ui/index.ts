@@ -7,3 +7,4 @@ export { default as FormButton } from "./FormButton";
 export { default as Alert } from "./Alert";
 export { default as Rows } from "./Rows";
 export { default as Link } from "./Link";
+export { default as PageContent } from "./PageContent";

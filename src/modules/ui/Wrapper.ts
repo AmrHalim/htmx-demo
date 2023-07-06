@@ -1,6 +1,6 @@
 import { renderProps } from "./helpers";
 
-type WrapperProps = {
+export type WrapperProps = {
   id?: string;
   element?: "div" | "span" | "ul" | "li" | "label";
   content: string;
