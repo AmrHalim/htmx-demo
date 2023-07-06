@@ -1,4 +1,4 @@
-import { Form, Input } from "../../../components";
+import { Form, Input } from "src/modules/ui";
 
 const FORM_ID = "login_form";
 

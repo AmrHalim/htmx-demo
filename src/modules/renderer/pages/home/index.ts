@@ -1,4 +1,4 @@
-import { Wrapper } from "../../components";
+import { Wrapper } from "src/modules/ui";
 import page, { PageContext } from "../../template/page";
 
 import WelcomeHeader from "./sections/WelcomeHeader";

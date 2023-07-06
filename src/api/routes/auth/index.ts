@@ -1,13 +1,8 @@
 import express from "express";
 
-import { loginPage } from "../../../modules/renderer";
-import { validateEmail } from "../../../modules/validator";
-import {
-  authenticate,
-  login,
-  AUTH_COOKIE_NAME,
-  logout,
-} from "../../../modules/auth";
+import { loginPage } from "src/modules/renderer";
+import { validateEmail } from "src/modules/validator";
+import { authenticate, login, AUTH_COOKIE_NAME, logout } from "src/modules/auth";
 
 import { redirect } from "../helpers";
 

@@ -1,5 +1,5 @@
-import { User } from "../../../auth";
-import { Button, Link, Wrapper } from "../../components";
+import { User } from "src/modules/auth";
+import { Button, Link, Wrapper } from "src/modules/ui";
 
 type HeaderProps = {
   user?: User;
