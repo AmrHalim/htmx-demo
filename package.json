@@ -16,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf build && tsc -p tsconfig.json && tsc-alias -p tsconfig.json",
-    "start": "nodemon --watch 'src/**/*.*' --exec 'yarn build && node build/api/index.js'",
+    "start": "nodemon --watch 'src/**/*.*' --exec 'yarn build && node build/src/index.js'",
     "lint": "eslint src",
     "format": "eslint src --fix",
     "prettier": "prettier --write .",
