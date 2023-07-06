@@ -1,7 +1,8 @@
-type LinkProps = {
+import { WrapperProps } from "./Wrapper";
+
+type LinkProps = Pick<WrapperProps, "style"> & {
   href: string;
   text: string;
-  style?: string;
 };
 
 export default ({ href, text, style }: LinkProps) => {

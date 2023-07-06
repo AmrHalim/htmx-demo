@@ -1,6 +1,6 @@
-import { Wrapper } from "src/modules/ui";
-import page, { PageContext } from "../../template/page";
+import { PageContent } from "src/modules/ui";
 
+import page, { PageContext } from "../../template/page";
 import WelcomeHeader from "./sections/WelcomeHeader";
 import GreetAlert from "./sections/GreetAlert";
 
@@ -9,10 +9,8 @@ export const render = ({ user }: PageContext) => {
 
   return page({
     title: "The Greeter App!",
-    content: Wrapper({
+    content: PageContent({
       content: `${WelcomeHeader}${GreetUser}`,
-      style:
-        "display: flex; flex-direction: column; justify-content: center; align-items: center;",
     }),
     context: { user },
   });
