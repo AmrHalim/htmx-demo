@@ -2,7 +2,7 @@
   "name": "htmx-demo",
   "version": "1.0.0",
   "description": "Learning htmx.",
-  "main": "src/index.ts",
+  "main": "src/api/index.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AmrHalim/htmx-demo.git"
