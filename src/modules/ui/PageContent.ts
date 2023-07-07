@@ -1,8 +1,7 @@
-import Wrapper, { WrapperProps } from "./Wrapper";
+import Wrapper, { WrapperProps } from './Wrapper';
 
-export default ({ content }: Pick<WrapperProps, "content">) =>
+export default ({ content }: Pick<WrapperProps, 'content'>) =>
   Wrapper({
     content,
-    style:
-      "display: flex; flex-direction: column; justify-content: center; align-items: center;",
+    style: 'display: flex; flex-direction: column; justify-content: center; align-items: center;',
   });

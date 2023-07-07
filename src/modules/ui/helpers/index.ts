@@ -4,14 +4,14 @@ type Prop = {
   prefix?: string;
 };
 
-export const renderProp = ({ name, value, prefix = "" }: Prop) => {
+export const renderProp = ({ name, value, prefix = '' }: Prop) => {
   if (value) {
     return `${name}="${prefix}${value}"`;
   }
-  return "";
+  return '';
 };
 
 export const renderProps = (props: Prop[]) => {
   const propsToRender = props.map((prop) => renderProp(prop));
-  return propsToRender?.length ? propsToRender.join(" ") : "";
+  return propsToRender?.length ? propsToRender.join(' ') : '';
 };

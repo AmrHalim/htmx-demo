@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parserOptions": { "project": ["./tsconfig.json"], "sourceType": "module" },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": "error",
+    "no-duplicate-imports": "warn",
+    "no-else-return": "warn",
+    "no-empty-function": "warn",
+    "no-extra-semi": "warn",
+    "no-invalid-regexp": "warn",
+    "no-lone-blocks": "warn",
+    "no-magic-numbers": "warn",
+    "no-multiple-empty-lines": "warn",
+    "no-nested-ternary": "error",
+    "no-param-reassign": "error",
+    "no-self-assign": "warn",
+    "no-shadow": "error",
+    "no-trailing-spaces": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "no-useless-return": "warn",
+    "prefer-arrow-callback": "error",
+    "prefer-destructuring": "warn",
+    "prefer-template": "warn",
+    "require-await": "warn"
+  }
+}
