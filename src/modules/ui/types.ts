@@ -1,1 +1,1 @@
-export type Method = "get" | "put" | "post";
+export type Method = 'get' | 'put' | 'post';

@@ -1,7 +1,7 @@
-import FormButton from "./FormButton";
-import Wrapper from "./Wrapper";
-import { renderProps } from "./helpers";
-import { Method } from "./types";
+import FormButton from './FormButton';
+import Wrapper from './Wrapper';
+import { renderProps } from './helpers';
+import { Method } from './types';
 
 type FormProps = {
   action: string;
@@ -17,17 +17,13 @@ type ValidationWrapper = {
   id: string;
   element: string;
 };
-export const makeValidationWrapper = ({
-  target,
-}: {
-  target: string;
-}): ValidationWrapper => {
+export const makeValidationWrapper = ({ target }: { target: string }): ValidationWrapper => {
   const id = `errors-${target}`;
   return {
     element: Wrapper({
-      content: "",
+      content: '',
       id,
-      style: "color: red; font-size: 12px;",
+      style: 'color: red; font-size: 12px;',
     }),
     id,
   };
@@ -36,8 +32,8 @@ export const makeValidationWrapper = ({
 export default ({
   action,
   children = [],
-  id = "",
-  method = "post",
+  id = '',
+  method = 'post',
   reserveValidationWrapper = false,
   submitLabel,
   validationWrapper,
@@ -45,22 +41,22 @@ export default ({
   const { element: validation, id: validationId } =
     reserveValidationWrapper && !validationWrapper
       ? makeValidationWrapper({ target: id })
-      : validationWrapper ?? { element: "", id: "" };
+      : validationWrapper ?? { element: '', id: '' };
 
   const submitButton = submitLabel
     ? FormButton({
         label: submitLabel,
       })
-    : "";
+    : '';
 
   const formProps = renderProps([
     {
-      name: "hx-target",
+      name: 'hx-target',
       value: validationId,
-      prefix: "#",
+      prefix: '#',
     },
     {
-      name: "id",
+      name: 'id',
       value: id,
     },
     {
@@ -71,10 +67,9 @@ export default ({
 
   return `<form ${formProps}>
     ${Wrapper({
-      element: "div",
-      style:
-        "display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap:4px;",
-      content: children.join("") + validation + submitButton,
+      element: 'div',
+      style: 'display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap:4px;',
+      content: children.join('') + validation + submitButton,
     })} 
   </form>`;
 };

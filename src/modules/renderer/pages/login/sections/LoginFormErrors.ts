@@ -1,4 +1,4 @@
-import { Rows } from "src/modules/ui";
+import { Rows } from 'src/modules/ui';
 
 type LoginFormErrorsProps = {
   errors: string[];

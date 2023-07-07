@@ -1,7 +1,7 @@
-import Wrapper from "./Wrapper";
-import { renderProps } from "./helpers";
+import Wrapper from './Wrapper';
+import { renderProps } from './helpers';
 
-type InputType = "text" | "number" | "email" | "submit" | "password";
+type InputType = 'text' | 'number' | 'email' | 'submit' | 'password';
 type InputProps = {
   id?: string;
   required?: boolean;
@@ -11,36 +11,28 @@ type InputProps = {
   label: string;
   validator?: {
     path: string;
-    trigger: "change" | "blur";
+    trigger: 'change' | 'blur';
     target?: string;
   };
 };
 
-export default ({
-  name,
-  type,
-  id,
-  label,
-  required = false,
-  placeHolder,
-  validator,
-}: InputProps) => {
+export default ({ name, type, id, label, required = false, placeHolder, validator }: InputProps) => {
   const inputProps = renderProps([
-    { name: "id", value: id },
+    { name: 'id', value: id },
     {
-      name: "placeholder",
+      name: 'placeholder',
       value: placeHolder,
     },
     {
-      name: "required",
-      value: required ? "required" : "",
+      name: 'required',
+      value: required ? 'required' : '',
     },
     {
-      name: "name",
+      name: 'name',
       value: name,
     },
     {
-      name: "type",
+      name: 'type',
       value: type,
     },
   ]);
@@ -49,25 +41,25 @@ export default ({
   const validationProps = validator
     ? renderProps([
         {
-          name: "hx-post",
+          name: 'hx-post',
           value: path,
         },
-        { name: "hx-trigger", value: trigger },
-        { name: "hx-target", value: target },
-        { name: "hx-sync", value: "closest form:abort" },
+        { name: 'hx-trigger', value: trigger },
+        { name: 'hx-target', value: target },
+        { name: 'hx-sync', value: 'closest form:abort' },
       ])
-    : "";
+    : '';
 
   const fieldLabel = label
     ? Wrapper({
-        element: "label",
+        element: 'label',
         content: label,
-        style: "padding-right: 4px;",
+        style: 'padding-right: 4px;',
       })
-    : "";
+    : '';
 
   return Wrapper({
     content: `${fieldLabel}<input ${inputProps} ${validationProps} />`,
-    element: "span",
+    element: 'span',
   });
 };

@@ -1,4 +1,4 @@
-import { Alert } from "src/modules/ui";
+import { Alert } from 'src/modules/ui';
 
 export default ({ name, email }: { name: string; email: string }) =>
   Alert({

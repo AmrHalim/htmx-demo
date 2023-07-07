@@ -1,5 +1,5 @@
-import { User } from "src/modules/auth";
-import Header from "../pages/sections/Header";
+import { User } from 'src/modules/auth';
+import Header from '../pages/sections/Header';
 
 export type PageContext = Record<string, any> & {
   user?: User;

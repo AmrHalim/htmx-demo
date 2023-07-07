@@ -1,4 +1,4 @@
-import Wrapper from "./Wrapper";
+import Wrapper from './Wrapper';
 
 type ButtonProps = {
   label: string;
@@ -6,6 +6,6 @@ type ButtonProps = {
 
 export default ({ label }: ButtonProps) =>
   Wrapper({
-    element: "span",
+    element: 'span',
     content: `<button type="submit">${label}</button>`,
   });

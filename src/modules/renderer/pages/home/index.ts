@@ -1,14 +1,14 @@
-import { PageContent } from "src/modules/ui";
+import { PageContent } from 'src/modules/ui';
 
-import page, { PageContext } from "../../template/page";
-import WelcomeHeader from "./sections/WelcomeHeader";
-import GreetAlert from "./sections/GreetAlert";
+import page, { PageContext } from '../../template/page';
+import WelcomeHeader from './sections/WelcomeHeader';
+import GreetAlert from './sections/GreetAlert';
 
 export const render = ({ user }: PageContext) => {
-  const GreetUser = user ? GreetAlert(user) : "";
+  const GreetUser = user ? GreetAlert(user) : '';
 
   return page({
-    title: "The Greeter App!",
+    title: 'The Greeter App!',
     content: PageContent({
       content: `${WelcomeHeader}${GreetUser}`,
     }),
@@ -16,4 +16,4 @@ export const render = ({ user }: PageContext) => {
   });
 };
 
-export { default as GreetAlert } from "./sections/GreetAlert";
+export { default as GreetAlert } from './sections/GreetAlert';

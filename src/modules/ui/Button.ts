@@ -1,5 +1,5 @@
-import { renderProps } from "./helpers";
-import { Method } from "./types";
+import { renderProps } from './helpers';
+import { Method } from './types';
 
 type ButtonProps = {
   label: string;
@@ -9,13 +9,7 @@ type ButtonProps = {
   target?: string;
 };
 
-export default ({
-  label,
-  method = "get",
-  action,
-  swap,
-  target,
-}: ButtonProps) => {
+export default ({ label, method = 'get', action, swap, target }: ButtonProps) => {
   const buttonProps = renderProps([
     { name: `hx-${method}`, value: action },
     { name: `hx-swap`, value: swap },

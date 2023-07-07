@@ -1,4 +1,4 @@
-import { Wrapper } from ".";
+import { Wrapper } from '.';
 
 type AlertProps = {
   title: string;
@@ -7,5 +7,5 @@ type AlertProps = {
 export default ({ title }: AlertProps) =>
   Wrapper({
     content: title,
-    element: "span",
+    element: 'span',
   });
