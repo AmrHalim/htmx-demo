@@ -17,9 +17,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf build && tsc",
     "postbuild": "ef-tspm",
-    "start": "nodemon --watch 'src/**/*.*' --exec 'yarn build && node build/src/index.js'",
-    "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix",
+    "start": "nodemon --watch 'src/**/*.*' --exec 'yarn build && node build/api/index.js'",
+    "lint": "eslint src",
+    "format": "eslint src --fix",
     "prettier": "prettier --write ."
   },
   "dependencies": {
