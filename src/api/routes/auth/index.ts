@@ -13,7 +13,7 @@ router.get('/login', (req, res) => {
     return res.redirect('/');
   }
 
-  res.send(loginPage.render());
+  return res.send(loginPage.render());
 });
 
 router.post('/logout', (req, res) => {
@@ -35,14 +35,14 @@ router.post('/login', (req, res) => {
   const user = login(req.body);
   if (user) {
     res.cookie('AUTH_TOKEN', user.token);
-    res.send(redirect('/'));
-  } else {
-    res.send(
-      loginPage.loginFormErrors({
-        errors: ['Wrong Credentials! Make sure your email and password are correct.'],
-      }),
-    );
+    return res.send(redirect('/'));
   }
+
+  res.send(
+    loginPage.loginFormErrors({
+      errors: ['Wrong Credentials! Make sure your email and password are correct.'],
+    }),
+  );
 });
 
 export default router;

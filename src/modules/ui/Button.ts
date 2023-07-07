@@ -12,8 +12,8 @@ type ButtonProps = {
 export default ({ label, method = 'get', action, swap, target }: ButtonProps) => {
   const buttonProps = renderProps([
     { name: `hx-${method}`, value: action },
-    { name: `hx-swap`, value: swap },
-    { name: `hx-target`, value: target },
+    { name: 'hx-swap', value: swap },
+    { name: 'hx-target', value: target },
   ]);
 
   return `<button ${buttonProps}>${label}</button>`;

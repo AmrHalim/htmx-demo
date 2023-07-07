@@ -5,6 +5,4 @@ type LinkProps = Pick<WrapperProps, 'style'> & {
   text: string;
 };
 
-export default ({ href, text, style }: LinkProps) => {
-  return `<a style="${style}" href="${href}">${text}</a>`;
-};
+export default ({ href, text, style }: LinkProps) => `<a style="${style}" href="${href}">${text}</a>`;

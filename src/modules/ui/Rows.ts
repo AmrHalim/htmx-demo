@@ -4,7 +4,7 @@ type RowsProps = {
   rows: string[];
 };
 export default ({ rows }: RowsProps) => {
-  const hasRows = rows.length > 0;
+  const hasRows = rows.length;
   const renderRows = rows
     .map((error) =>
       Wrapper({

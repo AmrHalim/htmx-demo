@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
   if (user) {
     return res.send(homePage.render({ user }));
   }
+
   res.redirect('/auth/login');
 });
 

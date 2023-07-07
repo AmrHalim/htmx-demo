@@ -18,18 +18,16 @@ const users: User[] = [
 ];
 
 export const login = ({ email, password }: User): User | undefined => {
-  const user = users.find((user) => user.email === email && user.password === password);
+  const user = users.find((_user) => _user.email === email && _user.password === password);
 
   if (user) {
     user.token = uuid();
     return user;
   }
-
-  return;
 };
 
 export const logout = (token?: string) => {
-  const user = users.find((user) => user.token === token);
+  const user = users.find((_user) => _user.token === token);
 
   if (user) {
     user.token = '';
