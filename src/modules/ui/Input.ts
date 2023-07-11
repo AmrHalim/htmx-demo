@@ -17,7 +17,7 @@ type InputProps = {
   };
 };
 
-export default ({ name, type, id, label, required = false, placeHolder, validator }: InputProps) => {
+export default ({ name, type, id, label, value, required = false, placeHolder, validator }: InputProps) => {
   const inputProps = renderProps([
     { name: 'id', value: id },
     {

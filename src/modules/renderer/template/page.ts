@@ -13,6 +13,7 @@ type PageProps = {
 
 export default ({ content, title, context }: PageProps) => {
   const header = Header({ user: context?.user });
+  const styles = loadMainStyles(context?.styling?.mode);
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -24,8 +25,10 @@ export default ({ content, title, context }: PageProps) => {
     ${styles}
   </head>
   <body>
-    ${header}
-    ${content}
+    <div id="app">
+      ${header}
+      ${content}
+    </div>
   </body>
 </html>
   `;
