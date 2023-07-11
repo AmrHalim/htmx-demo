@@ -9,7 +9,7 @@ export type User = {
   password: string;
   token?: string;
 };
-const users: User[] = [
+export const users: User[] = [
   {
     email: 'amr.halim@gmail.com',
     name: 'Amr Halim',

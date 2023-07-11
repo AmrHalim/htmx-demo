@@ -14,4 +14,13 @@ router.get('/', (req, res) => {
   res.redirect('/auth/login');
 });
 
+router.post('/users', (req, res) => {
+  const user = authenticate(req);
+  if (user) {
+    return res.send(homePage.currentUsers(user, Boolean(req.body.live)));
+  }
+
+  res.send('');
+});
+
 export default router;

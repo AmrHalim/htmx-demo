@@ -18,6 +18,7 @@ import {
 } from '../style/types';
 import { createClassNameProp } from '../style/utils';
 import { renderProps } from './helpers';
+import { Method, Swap } from './types';
 
 export type WrapperProps = {
   alignItems?: AlignItems;
@@ -59,6 +60,17 @@ export type WrapperProps = {
   left?: Size;
   right?: Size;
   height?: number;
+  trigger?: {
+    method: Method;
+    event: 'load';
+    swap: Swap;
+    path: string;
+    delay?: number;
+    include?: {
+      $: 'name';
+      target: string;
+    }[];
+  };
 };
 
 export const loadStyles = ({
@@ -140,7 +152,33 @@ export const loadStyles = ({
   return classes.length ? classes.join(' ') : '';
 };
 
-export default ({ id, content, children, element = 'div', style, htmlFor, ...rest }: WrapperProps) =>
+const DEFAULT_TRIGGER_DELAY = 0;
+const loadTrigger = ({ trigger }: Pick<WrapperProps, 'trigger'>) => {
+  if (!trigger) {
+    return '';
+  }
+  const { event = 'load', method, swap, path, delay = DEFAULT_TRIGGER_DELAY, include } = trigger || {};
+  return renderProps([
+    {
+      name: `hx-${method}`,
+      value: path,
+    },
+    {
+      name: 'hx-trigger',
+      value: `${event} delay:${delay}s`,
+    },
+    {
+      name: 'hx-swap',
+      value: swap,
+    },
+    {
+      name: 'hx-include',
+      value: include?.length ? `[${include.map(({ $, target }) => `${$}='${target}'`).join(' ')}]` : '',
+    },
+  ]);
+};
+
+export default ({ id, content, children, element = 'div', style, htmlFor, trigger, ...rest }: WrapperProps) =>
   `<${element} ${renderProps([
     {
       name: 'id',
@@ -149,4 +187,4 @@ export default ({ id, content, children, element = 'div', style, htmlFor, ...res
     { name: 'style', value: style },
     { name: 'for', value: htmlFor },
     { name: 'class', value: loadStyles(rest) },
-  ])}>${content ?? children?.join('')}</${element}>`;
+  ])} ${loadTrigger({ trigger })}>${content ?? children?.join('')}</${element}>`;

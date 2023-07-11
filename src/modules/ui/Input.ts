@@ -1,5 +1,6 @@
 import Wrapper, { loadStyles } from './Wrapper';
 import { renderProps } from './helpers';
+import { Method, Swap } from './types';
 
 type InputType = 'text' | 'number' | 'email' | 'submit' | 'password' | 'checkbox';
 type InputProps = {
@@ -10,6 +11,13 @@ type InputProps = {
   placeHolder?: string;
   label: string;
   value?: string;
+  event?: {
+    on: 'click';
+    method: Method;
+    action: string;
+    target?: string;
+    swap?: Swap;
+  };
   validator?: {
     path: string;
     trigger: 'change' | 'blur';
@@ -17,7 +25,7 @@ type InputProps = {
   };
 };
 
-export default ({ name, type, id, label, value, required = false, placeHolder, validator }: InputProps) => {
+export default ({ name, type, id, label, value, required = false, placeHolder, validator, event }: InputProps) => {
   const inputProps = renderProps([
     { name: 'id', value: id },
     {
@@ -41,12 +49,37 @@ export default ({ name, type, id, label, value, required = false, placeHolder, v
       value,
     },
     {
+      name: 'checked',
+      value: type === 'checkbox' && value ? 'checked' : '',
+    },
+    {
       name: 'class',
       value: loadStyles({
         padding: 'gutter',
         marginTop: 'xsmall',
       }),
     },
+    ...(event
+      ? [
+          {
+            name: `hx-${event.method}`,
+            value: event.action,
+          },
+          {
+            name: 'hx-trigger',
+            value: event.on,
+          },
+          {
+            name: 'hx-target',
+            value: event.target,
+            prefix: '#',
+          },
+          {
+            name: 'hx-swap',
+            value: event.swap,
+          },
+        ]
+      : []),
   ]);
 
   const { path, trigger, target } = validator ?? {};
