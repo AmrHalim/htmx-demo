@@ -1,8 +1,12 @@
 import { User } from '../../../modules/auth';
+import { Theme, loadMainStyles } from '../../../modules/style';
 import Header from '../pages/sections/Header';
 
 export type PageContext = {
   user?: User;
+  styling?: {
+    theme: Theme;
+  };
 };
 
 type PageProps = {
@@ -13,6 +17,7 @@ type PageProps = {
 
 export default ({ content, title, context }: PageProps) => {
   const header = Header({ user: context?.user });
+  const styles = loadMainStyles(context?.styling?.theme);
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +26,13 @@ export default ({ content, title, context }: PageProps) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title}</title>
     <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    ${styles}
   </head>
   <body>
-    ${header}
-    ${content}
+    <div id="app">
+      ${header}
+      ${content}
+    </div>
   </body>
 </html>
   `;

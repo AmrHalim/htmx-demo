@@ -1,5 +1,5 @@
 import FormButton from './FormButton';
-import Wrapper from './Wrapper';
+import Wrapper, { loadStyles } from './Wrapper';
 import { renderProps } from './helpers';
 import { Method } from './types';
 
@@ -23,7 +23,8 @@ export const makeValidationWrapper = ({ target }: { target: string }): Validatio
     element: Wrapper({
       content: '',
       id,
-      style: 'color: red; font-size: 12px;',
+      color: 'critical',
+      fontSize: 'medium',
     }),
     id,
   };
@@ -63,13 +64,22 @@ export default ({
       name: `hx-${method}`,
       value: action,
     },
+    {
+      name: 'class',
+      value: loadStyles({
+        width: 'full',
+      }),
+    },
   ]);
 
   return `<form ${formProps}>
     ${Wrapper({
-      element: 'div',
-      style: 'display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap:4px;',
-      content: children.join('') + validation + submitButton,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flexStart',
+      justifyContent: 'center',
+      gap: 'xsmall',
+      children: children.concat([validation, submitButton]),
     })} 
   </form>`;
 };

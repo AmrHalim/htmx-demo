@@ -1,7 +1,7 @@
-import Wrapper from './Wrapper';
+import Wrapper, { loadStyles } from './Wrapper';
 import { renderProps } from './helpers';
 
-type InputType = 'text' | 'number' | 'email' | 'submit' | 'password';
+type InputType = 'text' | 'number' | 'email' | 'submit' | 'password' | 'checkbox';
 type InputProps = {
   id?: string;
   required?: boolean;
@@ -9,6 +9,7 @@ type InputProps = {
   type: InputType;
   placeHolder?: string;
   label: string;
+  value?: string;
   validator?: {
     path: string;
     trigger: 'change' | 'blur';
@@ -16,7 +17,7 @@ type InputProps = {
   };
 };
 
-export default ({ name, type, id, label, required = false, placeHolder, validator }: InputProps) => {
+export default ({ name, type, id, label, value, required = false, placeHolder, validator }: InputProps) => {
   const inputProps = renderProps([
     { name: 'id', value: id },
     {
@@ -34,6 +35,17 @@ export default ({ name, type, id, label, required = false, placeHolder, validato
     {
       name: 'type',
       value: type,
+    },
+    {
+      name: 'value',
+      value,
+    },
+    {
+      name: 'class',
+      value: loadStyles({
+        padding: 'gutter',
+        marginTop: 'xsmall',
+      }),
     },
   ]);
 
@@ -54,12 +66,22 @@ export default ({ name, type, id, label, required = false, placeHolder, validato
     ? Wrapper({
         element: 'label',
         content: label,
-        style: 'padding-right: 4px;',
+        htmlFor: id,
       })
     : '';
 
+  const bleedLabel = type === 'checkbox';
+
   return Wrapper({
-    content: `${fieldLabel}<input ${inputProps} ${validationProps} />`,
-    element: 'span',
+    element: 'div',
+    display: 'flex',
+    flexDirection: type === 'checkbox' ? 'row' : 'column',
+    alignItems: type === 'checkbox' ? 'center' : 'stretch',
+    width: type === 'checkbox' ? 'auto' : 'full',
+    children: [
+      bleedLabel ? '' : fieldLabel,
+      `<input ${inputProps} ${validationProps} />`,
+      bleedLabel ? fieldLabel : '',
+    ],
   });
 };

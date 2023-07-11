@@ -7,39 +7,55 @@ type HeaderProps = {
 
 export default ({ user }: HeaderProps) => {
   const authProps = Wrapper({
-    content: (user
+    display: 'flex',
+    gap: 'xsmall',
+    alignItems: 'center',
+    children: user
       ? [
           Wrapper({
             content: user.name,
-            element: 'span',
-            style: 'border-right: 1px solid black; padding-right: 4px;',
+            borderRightWidth: 'xxxsmall',
+            borderRightStyle: 'solid',
+            borderRightColor: 'neutral',
+            paddingRight: 'gutter',
           }),
           Button({
             action: '/auth/logout',
             method: 'post',
-            label: 'Logout!',
+            label: 'Logout',
+            tone: 'critical',
           }),
         ]
       : [
           Link({
             href: '/auth/login',
             text: 'Login',
-            style: 'color: black;',
+            tone: 'primary',
+            fontSize: 'medium',
+            weight: 'bold',
           }),
-        ]
-    ).join(''),
-    style: 'display: flex; gap: 4px',
+        ],
   });
 
   const logo = Wrapper({
-    content: 'The Greeter App',
-    style: 'font-size: 20px; font-weight: bold;',
+    content: Link({
+      text: 'The App',
+      href: '/',
+      tone: 'primary',
+      fontSize: 'large',
+      weight: 'bold',
+    }),
+    fontSize: 'large',
+    fontWeight: 'bold',
   });
 
   return Wrapper({
-    content: logo + authProps,
-    element: 'div',
-    style:
-      'display: flex; background: #E9ECF1; justify-content: space-between; align-items: center; padding: 6px; margin-bottom: 12px;',
+    display: 'flex',
+    background: 'secondary',
+    justifyContent: 'spaceBetween',
+    alignItems: 'center',
+    padding: 'small',
+    marginBottom: 'medium',
+    children: [logo, authProps],
   });
 };
