@@ -20,7 +20,7 @@ router.post('/logout', (req, res) => {
   logout(authenticate(req)?.token);
 
   res.clearCookie(AUTH_COOKIE_NAME);
-  return res.send(redirect('/'));
+  return redirect(res, '/');
 });
 
 router.post('/login', (req, res) => {
@@ -34,8 +34,8 @@ router.post('/login', (req, res) => {
 
   const user = login(req.body);
   if (user) {
-    res.cookie('AUTH_TOKEN', user.token);
-    return res.send(redirect('/'));
+    res.cookie(AUTH_COOKIE_NAME, user.token);
+    return redirect(res, '/');
   }
 
   res.send(
