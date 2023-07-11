@@ -111,10 +111,6 @@ export default ({ name, type, id, label, value, required = false, placeHolder, v
     flexDirection: type === 'checkbox' ? 'row' : 'column',
     alignItems: type === 'checkbox' ? 'center' : 'stretch',
     width: type === 'checkbox' ? 'auto' : 'full',
-    children: [
-      bleedLabel ? '' : fieldLabel,
-      `<input ${inputProps} ${validationProps} />`,
-      bleedLabel ? fieldLabel : '',
-    ],
+    children: [bleedLabel ? '' : fieldLabel, `<input${inputProps}${validationProps} />`, bleedLabel ? fieldLabel : ''],
   });
 };

@@ -72,7 +72,7 @@ export default ({
     },
   ]);
 
-  return `<form ${formProps}>
+  return `<form${formProps}>
     ${Wrapper({
       display: 'flex',
       flexDirection: 'column',
