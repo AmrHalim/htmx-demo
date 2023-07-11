@@ -1,4 +1,4 @@
-import { User } from 'src/modules/auth';
+import { User } from '../../../modules/auth';
 import Header from '../pages/sections/Header';
 
 export type PageContext = {

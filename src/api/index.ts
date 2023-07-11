@@ -3,8 +3,6 @@ import cookie_parser from 'cookie-parser';
 
 import configureRoutes from './routes';
 
-const PORT = 3000;
-
 const app = express();
 app.use(
   express.urlencoded({
@@ -15,5 +13,4 @@ app.use(cookie_parser());
 
 configureRoutes(app);
 
-// eslint-disable-next-line no-console
-app.listen(PORT, () => console.log(`App listening on port ${PORT}`));
+export default app;

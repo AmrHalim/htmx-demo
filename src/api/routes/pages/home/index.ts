@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { homePage } from 'src/modules/renderer';
-import { authenticate } from 'src/modules/auth';
+import { homePage } from '../../../../modules/renderer';
+import { authenticate } from '../../../../modules/auth';
 
 const router = express.Router();
 

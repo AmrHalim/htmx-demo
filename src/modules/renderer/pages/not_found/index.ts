@@ -1,4 +1,4 @@
-import { Heading, PageContent } from 'src/modules/ui';
+import { Heading, PageContent } from '../../../../modules/ui';
 
 import page, { PageContext } from '../../template/page';
 

@@ -1,4 +1,4 @@
-import { Heading } from 'src/modules/ui';
+import { Heading } from '../../../../../modules/ui';
 
 export default Heading({
   label: 'Welcome to the Greeter App!',
