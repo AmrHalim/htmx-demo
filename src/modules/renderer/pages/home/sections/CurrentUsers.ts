@@ -34,6 +34,13 @@ export default (user?: User, showLive?: boolean) => {
           space: 'small',
           id: 'users-list',
         }),
+        showLive
+          ? Toast({
+              delay: 2,
+              message: 'Refreshing user list every 5 seconds...',
+              position: 'bottom',
+            })
+          : '',
       ],
       trigger: showLive
         ? {

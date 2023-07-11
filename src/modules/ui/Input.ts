@@ -1,5 +1,6 @@
 import Wrapper, { loadStyles } from './Wrapper';
 import { renderProps } from './helpers';
+import { Method, Swap } from './types';
 
 type InputType = 'text' | 'number' | 'email' | 'submit' | 'password' | 'checkbox';
 type InputProps = {
