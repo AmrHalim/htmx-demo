@@ -36,5 +36,5 @@ export default ({
     { name: 'class', value: classNames.length ? classNames.join(' ') : '' },
   ]);
 
-  return `<a ${linkProps}>${text}</a>`;
+  return `<a${linkProps}>${text}</a>`;
 };

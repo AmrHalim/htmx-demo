@@ -32,5 +32,5 @@ export default ({ label, method = 'get', action, swap, target, tone = 'primary' 
     { name: 'class', value: loadToneStyles(tone) },
   ]);
 
-  return `<button ${buttonProps}>${label}</button>`;
+  return `<button${buttonProps}>${label}</button>`;
 };

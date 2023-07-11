@@ -179,7 +179,7 @@ const loadTrigger = ({ trigger }: Pick<WrapperProps, 'trigger'>) => {
 };
 
 export default ({ id, content, children, element = 'div', style, htmlFor, trigger, ...rest }: WrapperProps) =>
-  `<${element} ${renderProps([
+  `<${element}${renderProps([
     {
       name: 'id',
       value: id,
