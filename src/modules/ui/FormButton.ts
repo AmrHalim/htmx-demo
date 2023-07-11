@@ -1,4 +1,4 @@
-import Wrapper from './Wrapper';
+import Wrapper, { loadStyles } from './Wrapper';
 
 type ButtonProps = {
   label: string;
@@ -7,5 +7,16 @@ type ButtonProps = {
 export default ({ label }: ButtonProps) =>
   Wrapper({
     element: 'span',
-    content: `<button type="submit">${label}</button>`,
+    content: `<button class="${loadStyles({
+      background: 'primary',
+      fontSize: 'medium',
+      border: 'unset',
+      padding: 'gutter',
+      borderRadius: 'xsmall',
+      fontWeight: 'bold',
+      cursor: 'pointer',
+      color: 'white',
+      width: 'full',
+    })}" type="submit">${label}</button>`,
+    width: 'full',
   });

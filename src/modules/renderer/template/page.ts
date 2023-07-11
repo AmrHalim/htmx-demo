@@ -21,6 +21,7 @@ export default ({ content, title, context }: PageProps) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title}</title>
     <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+    ${styles}
   </head>
   <body>
     ${header}

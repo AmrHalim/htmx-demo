@@ -8,7 +8,7 @@ export const render = ({ user }: PageContext) => {
   const GreetUser = user ? GreetAlert(user) : '';
 
   return page({
-    title: 'The Greeter App!',
+    title: 'The App!',
     content: PageContent({
       content: `${WelcomeHeader}${GreetUser}`,
     }),
