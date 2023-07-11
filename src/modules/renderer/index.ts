@@ -1,3 +1,3 @@
 export * as homePage from './pages/home';
-export * as loginPage from './pages/login';
+export * as auth from './pages/auth';
 export * as notFound from './pages/not_found';

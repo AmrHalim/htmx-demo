@@ -1,4 +1,4 @@
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import { v4 as uuid } from 'uuid';
 
 export const AUTH_COOKIE_NAME = 'AUTH_TOKEN';
@@ -15,7 +15,14 @@ const users: User[] = [
     name: 'Amr Halim',
     password: '12345',
   },
+  {
+    email: 'amr.haliim@gmail.com',
+    name: 'Amr',
+    password: '12345',
+  },
 ];
+
+export const userExists = ({ email }: User): boolean => users.some((user) => user.email === email);
 
 export const login = ({ email, password }: User): User | undefined => {
   const user = users.find((_user) => _user.email === email && _user.password === password);
@@ -34,8 +41,16 @@ export const logout = (token?: string) => {
   }
 };
 
+export const register = (user: User) => {
+  const newUser = { ...user, token: uuid() };
+  users.push(newUser);
+  return newUser;
+};
+
 export const authenticate = (req: Request) => {
   const authToken = req.cookies?.[AUTH_COOKIE_NAME];
 
   return users.filter((user) => Boolean(user.token)).find((user) => user.token === authToken);
 };
+
+export const persistAuthToken = (res: Response, token: string) => res.cookie(AUTH_COOKIE_NAME, token);
