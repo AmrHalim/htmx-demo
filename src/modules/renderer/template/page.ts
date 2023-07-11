@@ -1,8 +1,12 @@
 import { User } from '../../../modules/auth';
+import { Theme, loadMainStyles } from '../../../modules/style';
 import Header from '../pages/sections/Header';
 
 export type PageContext = {
   user?: User;
+  styling?: {
+    theme: Theme;
+  };
 };
 
 type PageProps = {
@@ -13,7 +17,7 @@ type PageProps = {
 
 export default ({ content, title, context }: PageProps) => {
   const header = Header({ user: context?.user });
-  const styles = loadMainStyles(context?.styling?.mode);
+  const styles = loadMainStyles(context?.styling?.theme);
   return `
 <!DOCTYPE html>
 <html lang="en">
